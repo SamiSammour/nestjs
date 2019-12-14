@@ -1,6 +1,5 @@
-const config = require('config');
+import config from 'config';
 import { parse } from 'url';
-// const d = require('debug');
 import d from 'debug';
 
 const db = config.get('db');
@@ -17,7 +16,7 @@ let connectionInfo = {
   password: process.env.MODE === 'logs' ? logsDB.password : process.env.DB_PASS || db.password,
   database: process.env.MODE === 'logs' ? logsDB.database : process.env.DB_DATABASE || db.database,
 };
-if (process.env.DB_URL) { 
+if (process.env.DB_URL) {
   const parsed = parse(process.env.DB_URL);
   const [username, password] = parsed.auth.split(':');
   connectionInfo = {

@@ -1,8 +1,8 @@
-import { Table, Column, DataType, NotNull, BelongsTo } from "sequelize-typescript";
+import { Table, Column, DataType, NotNull, BelongsTo } from 'sequelize-typescript';
 
-import { LogMessageCategories } from "../common/enum/message-categories.enum";
+import { LogMessageCategories } from '../common/enum/message-categories.enum';
 import { AlphaModel } from '@alphaapps/nestjs-db';
-import { LogGroup } from "./log-group.model";
+import { LogGroup } from './log-group.model';
 
 @Table
 export class LogMessage extends AlphaModel<LogMessage> {
@@ -20,14 +20,13 @@ export class LogMessage extends AlphaModel<LogMessage> {
       LogMessageCategories.REWRITE
     )
   })
-  category: LogMessageCategories
+  category: LogMessageCategories;
 
   @Column({
     type: DataType.JSON
   })
   data: object;
 
-
   @BelongsTo(() => LogGroup, 'groupId')
-  group: LogGroup
+  group: LogGroup;
 }

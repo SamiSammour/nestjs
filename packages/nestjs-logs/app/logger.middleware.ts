@@ -1,6 +1,6 @@
 import { Injectable, NestMiddleware, Inject } from '@nestjs/common';
 import { Request, Response } from 'express';
-const uuidv4 = require('uuid/v4');
+import uuidv4 from 'uuid/v4';
 import d from 'debug';
 
 const packageName = process.env.npm_package_name;
@@ -13,7 +13,7 @@ export class LoggerMiddleware implements NestMiddleware {
   constructor(
     @Inject('SEQUELIZE')
     private readonly sequelizeInstance
-  ){
+  ) {
     this.sequelize = sequelizeInstance;
   }
 
@@ -78,14 +78,14 @@ export class LoggerMiddleware implements NestMiddleware {
       data: req.body,
       category: 'reqbody',
       date: new Date()
-    })
+    });
     this.processQueue(groupId, queue);
   }
 
   processQueue(groupId: number, queue: any[]) {
-    if (!groupId) return;
+    if (!groupId) { return; }
     const messages = queue.splice(0, queue.length);
-    if (!messages.length) return;
+    if (!messages.length) { return; }
     // append groupId to messages
     for (const m of messages) {
       m.groupId = groupId;

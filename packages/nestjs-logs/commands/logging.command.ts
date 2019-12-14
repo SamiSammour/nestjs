@@ -1,6 +1,13 @@
 /**
  * This scripts can be run using the following command:
- * MODE=logs CLI_PATH='./src/logs/app/cli.ts' npx nestjs-command read:logs --sort=asc --limit=10 --last=10m --url=/ --method=post --from=2019-11-12T11:20:39.184Z --to=2019-11-12T11:20:39.184Z
+ * MODE=logs CLI_PATH='./src/logs/app/cli.ts' npx nestjs-command read:logs \
+ *  --sort=<asc|desc> \
+ *  --limit=<number> \
+ *  --last=<duration> \
+ *  --url=<string> \
+ *  --method=<http method> \
+ *  --from=<iso date> \
+ *  --to=<iso date>
  */
 import { Injectable, Inject } from '@nestjs/common';
 import { Command, Option } from 'nestjs-command';
@@ -8,9 +15,7 @@ import * as readline from 'readline';
 import { Op } from 'sequelize';
 import * as util from 'util';
 import * as _ from 'lodash';
-
-const moment = require('moment');
-
+import moment from 'moment';
 
 @Injectable()
 export class LoggingCommand {
@@ -19,7 +24,7 @@ export class LoggingCommand {
   constructor(
     @Inject('SEQUELIZE')
     private readonly sequelizeInstance
-  ){
+  ) {
     this.sequelize = sequelizeInstance;
   }
 
@@ -43,7 +48,7 @@ export class LoggingCommand {
       // @ts-ignore
       describe: 'sort records asc or desc',
       type: 'string',
-      choices: ['asc','desc'],
+      choices: ['asc', 'desc'],
       default: 'desc'
     }) sort?: string,
     @Option({
@@ -92,8 +97,7 @@ export class LoggingCommand {
       const since = new Date();
       if (unit === 'm') {
         since.setMinutes(since.getMinutes() - amount);
-      }
-      else if (unit === 'h') {
+      } else if (unit === 'h') {
         since.setHours(since.getHours() - amount);
       }
       where.date = {
@@ -153,7 +157,7 @@ export class LoggingCommand {
     }
     const index = parseInt(answer, 10);
 
-    if (Number.isNaN(index)) return;
+    if (Number.isNaN(index)) { return; }
     const group = groups[index];
     const messages = await this.sequelize.models.LogMessage.findAll({
       where: {

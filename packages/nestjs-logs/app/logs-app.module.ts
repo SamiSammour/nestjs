@@ -5,7 +5,6 @@ import { Module } from '@nestjs/common';
 import { LogsModule } from './logs.module';
 import { LogGroup, LogMessage } from '../';
 
-
 @Module({
   imports: [
     AccessControlModule.forRoles(new RolesBuilder()),
@@ -15,4 +14,4 @@ import { LogGroup, LogMessage } from '../';
     LogsModule
   ]
 })
-export class LogsAppModule{}
+export class LogsAppModule {}

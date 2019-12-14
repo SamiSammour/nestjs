@@ -1,7 +1,6 @@
 import { Sequelize } from 'sequelize-typescript';
 import { dbConfig } from './sequelize.config';
 
-
 export function createDatabaseProvider(modelsDir) {
   return [{
     provide: 'SEQUELIZE',
@@ -11,5 +10,5 @@ export function createDatabaseProvider(modelsDir) {
       await sequelize.sync();
       return sequelize;
     }
-  }]
+  }];
 }

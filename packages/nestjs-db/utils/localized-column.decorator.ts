@@ -55,7 +55,7 @@ function annotate(target: any,
     }
   }
 
-  const localization = {}
+  const localization = {};
   for (const [locale, fieldTemplate] of Object.entries(Locals)) {
     const localizedFieldName = format(fieldTemplate, propertyName);
     localization[locale] = localizedFieldName;
@@ -68,7 +68,7 @@ function annotate(target: any,
     localization,
     get() {
       const fieldTemplate = Locals[this.$locale || 'en'];
-      const localizedFieldName = format(fieldTemplate, this.rawAttributes['name'].field);
+      const localizedFieldName = format(fieldTemplate, this.rawAttributes.name.field);
       return this[localizedFieldName];
     }
   });

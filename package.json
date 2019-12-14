@@ -12,6 +12,7 @@
     "@types/node": "^12.12.17",
     "@types/sequelize": "^4.28.8",
     "lerna": "^3.19.0",
+    "tslint": "^5.20.1",
     "typescript": "^3.7.3"
   },
   "dependencies": {

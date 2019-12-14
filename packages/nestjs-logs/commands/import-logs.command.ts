@@ -12,11 +12,9 @@ import { Op } from 'sequelize';
 import * as path from 'path';
 import * as fs from 'fs';
 import * as os from 'os';
-
-const moment = require('moment');
-const config = require('config');
-
 import { LoggingCommand } from './logging.command';
+import moment from 'moment';
+import config from 'config';
 
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
@@ -33,7 +31,7 @@ export class ImportLogsCommand extends LoggingCommand {
       const params = {
         Bucket: config.get('S3.bucket'),
         Key: zipName
-      }
+      };
       await this.S3.getObject(params).promise().then(async output => {
         if (!output) {
           console.log('Could not import data from s3.');
@@ -134,7 +132,7 @@ export class ImportLogsCommand extends LoggingCommand {
       // @ts-ignore
       describe: 'sort records asc or desc',
       type: 'string',
-      choices: ['asc','desc'],
+      choices: ['asc', 'desc'],
       default: 'desc'
     }) sort?: string,
     @Option({
@@ -191,8 +189,7 @@ export class ImportLogsCommand extends LoggingCommand {
       const since = new Date();
       if (unit === 'm') {
         since.setMinutes(since.getMinutes() - amount);
-      }
-      else if (unit === 'h') {
+      } else if (unit === 'h') {
         since.setHours(since.getHours() - amount);
       }
       where.date = {

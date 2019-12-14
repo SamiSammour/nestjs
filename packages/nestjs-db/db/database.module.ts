@@ -13,6 +13,6 @@ export class DatabaseModule {
       module: DatabaseModule,
       providers: [...databaseProviders],
       exports: [...databaseProviders],
-    }
+    };
   }
 }
