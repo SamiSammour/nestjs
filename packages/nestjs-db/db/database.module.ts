@@ -2,7 +2,6 @@ import { Module, DynamicModule, UnprocessableEntityException } from '@nestjs/com
 import { createDatabaseProvider } from './database.providers';
 
 @Module({})
-// @ts-ignore
 export class DatabaseModule {
   static register(options): DynamicModule {
     if (!options.modelsDir) {

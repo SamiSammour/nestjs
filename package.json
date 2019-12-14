@@ -11,6 +11,7 @@
   "devDependencies": {
     "@types/node": "^12.12.17",
     "@types/sequelize": "^4.28.8",
+    "@types/yargs": "^13.0.3",
     "lerna": "^3.19.0",
     "tslint": "^5.20.1",
     "typescript": "^3.7.3"

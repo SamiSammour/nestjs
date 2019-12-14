@@ -35,7 +35,7 @@ export class LoggingCommand {
 
   public question = q => new Promise(((resolve) => {
     this.rl.question(q, resolve);
-  }));
+  }))
 
   @Command({
     command: 'read:logs',
@@ -45,7 +45,6 @@ export class LoggingCommand {
   async create(
     @Option({
       name: 'sort',
-      // @ts-ignore
       describe: 'sort records asc or desc',
       type: 'string',
       choices: ['asc', 'desc'],
@@ -53,39 +52,33 @@ export class LoggingCommand {
     }) sort?: string,
     @Option({
       name: 'limit',
-      // @ts-ignore
       describe: 'number of records limit',
       type: 'number',
       default: 10
     }) limit?: number,
     @Option({
       name: 'last',
-      // @ts-ignore
       describe: 'last x-min/h',
       type: 'string'
     }) last?: string,
     @Option({
       name: 'method',
-      // @ts-ignore
       describe: 'request method',
       type: 'string',
       choices: ['get', 'post', 'put', 'patch', 'delete']
     }) method?: string,
     @Option({
       name: 'url',
-      // @ts-ignore
       describe: 'request url',
       type: 'string'
     }) url?: string,
     @Option({
       name: 'from',
-      // @ts-ignore
       describe: 'from date/time',
       type: 'string'
     }) from?: string,
     @Option({
       name: 'to',
-      // @ts-ignore
       describe: 'to date/time',
       type: 'string'
     }) to?: string
