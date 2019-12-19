@@ -1,0 +1,20 @@
+{
+  "name": "@alphaapps/nestjs-config",
+  "version": "0.0.1",
+  "description": "> TODO: description",
+  "author": "Sami Sammour <samisammour@gmail.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@hapi/joi": "^16.1.8",
+    "@nestjs/common": "^6.10.11"
+  },
+  "devDependencies": {
+    "@types/hapi__joi": "^16.0.4"
+  }
+}
