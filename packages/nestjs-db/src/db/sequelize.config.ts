@@ -37,5 +37,6 @@ export const dbConfig: any = {
     paranoid: def.paranoid !== undefined ? def.paranoid : true,
     timestamps: def.timestamps !== undefined ? def.timestamps : true,
     freezeTableName: def.freezeTableName !== undefined ? def.freezeTableName : false
-  }
+  },
+  force: db.force || false
 };

@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "declaration": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "es2018",
+    "sourceMap": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "allowJs": false,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "composite": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": "./packages",
+    "paths": {
+      "@alphaapps/nestjs-db": ["nestjs-db/src"],
+      "@alphaapps/nestjs-db/*": ["nestjs-db/src/*"]
+  }
+},
+  "references": [
+    { "path": "crud" },
+    { "path": "nestjs-db"}
+  ]
+}

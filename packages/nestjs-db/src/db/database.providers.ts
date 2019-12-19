@@ -7,7 +7,7 @@ export function createDatabaseProvider(modelsDir) {
     useFactory: async () => {
       const sequelize = new Sequelize(dbConfig);
       sequelize.addModels(modelsDir);
-      await sequelize.sync();
+      await sequelize.sync({ force: dbConfig.force });
       return sequelize;
     }
   }];

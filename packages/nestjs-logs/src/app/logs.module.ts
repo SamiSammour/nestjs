@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { LogGroup, LogMessage, LoggingCommand, ImportLogsCommand } from '../';
+import { LogGroup, LogMessage, LoggingCommand, ImportLogsCommand } from '..';
 import { CommandModule } from 'nestjs-command';
 import { DatabaseModule, AlphaModel } from '@alphaapps/nestjs-db';
 

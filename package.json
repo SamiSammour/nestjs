@@ -2,27 +2,42 @@
   "name": "@alphaapps/nestjs",
   "version": "0.0.1",
   "description": "A set of libraries for NestJS",
-  "main": "index.js",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "tslint 'packages/**/*.ts' --fix",
+    "start": "nodemon -r tsconfig-paths/register -w integration -e ts ./node_modules/.bin/ts-node integration/main.ts"
   },
   "author": "Sami Sammour <samisammour@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@types/express": "^4.17.2",
     "@types/node": "^12.12.17",
     "@types/sequelize": "^4.28.8",
     "@types/yargs": "^13.0.3",
     "lerna": "^3.19.0",
+    "nodemon": "^2.0.2",
+    "ts-node": "^8.5.4",
+    "tsconfig-paths": "^3.9.0",
     "tslint": "^5.20.1",
     "typescript": "^3.7.3"
   },
   "dependencies": {
     "@nestjs/common": "^6.10.11",
+    "@nestjs/core": "^6.10.11",
+    "@nestjs/platform-express": "^6.10.12",
     "@nestjsx/crud": "^4.3.0-beta.0",
     "@nestjsx/crud-request": "^4.3.0-beta.0",
     "@nestjsx/util": "^4.3.0-beta.0",
+    "config": "^3.2.4",
     "debug": "^4.1.1",
     "lodash": "^4.17.15",
+    "pg": "^7.15.1",
+    "reflect-metadata": "^0.1.13",
     "sequelize": "^5.21.3",
     "sequelize-typescript": "^1.1.0"
   }

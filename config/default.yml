@@ -1,0 +1,5 @@
+server:
+  port: 3000
+MODE: 'normal'
+MODELS_DIR: './**/*.model.js'
+LOG_MODELS_DIR: './**/{alpha,log-message,log-group}.model.js'
