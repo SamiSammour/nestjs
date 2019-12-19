@@ -1,0 +1,26 @@
+{
+  "name": "@alphaapps/nestjs-common",
+  "version": "0.0.1",
+  "description": "> TODO: description",
+  "author": "Sami Sammour <samisammour@gmail.com>",
+  "homepage": "",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc -b"
+  },
+  "dependencies": {
+    "@nestjs/common": "^6.10.11",
+    "@nestjs/passport": "^6.1.1",
+    "accept-language-parser": "^1.5.0",
+    "aws-sdk": "^2.594.0",
+    "debug": "^4.1.1",
+    "firebase-admin": "^8.9.0",
+    "iso-639-1": "^2.1.0",
+    "lodash": "^4.17.15",
+    "nest-access-control": "^2.0.1",
+    "twilio": "^3.39.1"
+  },
+  "devDependencies": {}
+}
