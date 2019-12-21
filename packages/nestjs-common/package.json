@@ -1,6 +1,6 @@
 {
   "name": "@alphaapps/nestjs-common",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "> TODO: description",
   "author": "Sami Sammour <samisammour@gmail.com>",
   "homepage": "",
@@ -23,6 +23,5 @@
     "nest-access-control": "^2.0.1",
     "passport": "^0.4.1",
     "twilio": "^3.39.1"
-  },
-  "devDependencies": {}
+  }
 }

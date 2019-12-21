@@ -1,13 +1,13 @@
 {
   "name": "@alphaapps/nestjs-logs",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
     "build": "tsc -b"
   },
   "dependencies": {
-    "@alphaapps/nestjs-db": "^0.0.1",
+    "@alphaapps/nestjs-db": "^1.0.0",
     "@nestjs/core": "^6.10.4",
     "adm-zip": "^0.4.13",
     "aws-sdk": "^2.581.0",
