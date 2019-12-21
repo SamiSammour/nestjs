@@ -16,17 +16,12 @@ export class AuthService {
 
   async signUp(authCredentialsDto: RegisterUserDto): Promise<AuthUser> {
     const { email, password } = authCredentialsDto;
-    try {
-      return await this.usersRepository.create({
-        email,
-        // type: UserType.CUSTOMER,
-        isActive: false,
-        password,
-      });
-    } catch (errors) {
-      console.log(errors);
-      return errors;
-    }
+    return this.usersRepository.create({
+      email,
+      // type: UserType.CUSTOMER,
+      isActive: false,
+      password,
+    });
   }
 
   async signIn(dto: LoginUserDto): Promise<{ user: AuthUser; token: string }> {

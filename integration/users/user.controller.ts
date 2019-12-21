@@ -2,7 +2,7 @@ import { Controller } from '@nestjs/common';
 import { Crud, CrudController } from '@nestjsx/crud';
 import User from './user.model';
 import { UserService } from './user.service';
-// import { ApiUseTags } from '@nestjs/swagger';
+import { AclCrudController } from '@alphaapps/nestjs-common';
 
 @Crud({
   model: {
@@ -10,8 +10,9 @@ import { UserService } from './user.service';
   },
   validation: false,
 })
-// @ApiUseTags('users')
 @Controller('users')
 export class UserController implements CrudController<User> {
-  constructor(public service: UserService) {}
+  constructor(public service: UserService) {
+    // super();
+  }
 }

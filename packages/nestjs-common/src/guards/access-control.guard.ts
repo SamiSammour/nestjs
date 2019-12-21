@@ -5,7 +5,7 @@ import {
   UnauthorizedException,
   InternalServerErrorException,
 } from '@nestjs/common';
-import { Reflector } from '@nestjs/core';
+// import { Reflector } from '@nestjs/core';
 import { InjectRolesBuilder, RolesBuilder } from 'nest-access-control';
 import { getFeature, getAction } from '@nestjsx/crud';
 
@@ -22,7 +22,7 @@ const actionToGrantMap = {
 @Injectable()
 export class ACGuard<User extends any = any> implements CanActivate {
   constructor(
-    private readonly reflector: Reflector,
+    // private readonly reflector: Reflector,
     @InjectRolesBuilder() private readonly roleBuilder: RolesBuilder,
   ) {}
 

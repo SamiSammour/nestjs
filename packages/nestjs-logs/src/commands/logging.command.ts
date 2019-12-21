@@ -1,3 +1,4 @@
+// tslint:disable:no-console
 /**
  * This scripts can be run using the following command:
  * MODE=logs CLI_PATH='./src/logs/app/cli.ts' npx nestjs-command read:logs \
@@ -16,10 +17,13 @@ import { Op } from 'sequelize';
 import * as util from 'util';
 import * as _ from 'lodash';
 import moment from 'moment';
+import d from 'debug';
+
+const packageName = process.env.npm_package_name;
+const debug = d(`${packageName}:log-command`);
 
 @Injectable()
 export class LoggingCommand {
-
   public sequelize;
   constructor(
     @Inject('SEQUELIZE')
@@ -117,7 +121,7 @@ export class LoggingCommand {
       where.date[Op.lte] = moment(to);
     }
     const recordSort = sort === 'asc' ? 'ASC' : 'DESC';
-    console.log(where);
+    debug(where);
     await this.displayData({
       where,
       limit,

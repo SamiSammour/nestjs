@@ -2,12 +2,11 @@ import { Injectable, Logger } from '@nestjs/common';
 import * as admin from 'firebase-admin';
 import config from 'config';
 
-const firebase = config.get('firebase');
-
 @Injectable()
 export class FirebaseService {
   private logger = new Logger('Firebase Service', true);
   constructor() {
+    const firebase = config.get('firebase');
     if (typeof firebase !== 'undefined') {
       try {
         admin.initializeApp({

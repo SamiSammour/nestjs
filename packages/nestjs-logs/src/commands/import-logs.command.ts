@@ -15,17 +15,19 @@ import * as os from 'os';
 import { LoggingCommand } from './logging.command';
 import moment from 'moment';
 import config from 'config';
+import d from 'debug';
 
+const packageName = process.env.npm_package_name;
+const debug = d(`${packageName}:import-logs`);
 const readFileAsync = promisify(fs.readFile);
 const writeFileAsync = promisify(fs.writeFile);
 
 @Injectable()
 export class ImportLogsCommand extends LoggingCommand {
-
   private S3 = new AWS.S3(config.get('S3.credentials'));
 
   async importFromS3(zipName, zipPath) {
-    console.log('Importing from S3');
+    debug('Importing from S3');
     return new Promise(async (resolve, reject) => {
       // TODO: replace with credentials from config
       const params = {
@@ -34,10 +36,10 @@ export class ImportLogsCommand extends LoggingCommand {
       };
       await this.S3.getObject(params).promise().then(async output => {
         if (!output) {
-          console.log('Could not import data from s3.');
+          debug('Could not import data from s3.');
           reject();
         }
-        console.log('Writting the downloaded zip into disk.');
+        debug('Writing the downloaded zip into disk.');
         const err: any = await writeFileAsync(zipPath, output.Body);
         if (err) {
           reject();
@@ -48,13 +50,13 @@ export class ImportLogsCommand extends LoggingCommand {
   }
 
   async writeToDisk(zipPath, date) {
-    console.log('Unzipping logs');
+    debug('Unzipping logs');
     return new Promise(async (resolve, reject) => {
       const zip = new AdmZip(zipPath);
       const zipEntries = zip.getEntries();
 
       if (!zipEntries.length) {
-        console.log('No entries in zip file');
+        debug('No entries in zip file');
         reject();
       }
       const zipEntry = zipEntries[0];
@@ -62,7 +64,7 @@ export class ImportLogsCommand extends LoggingCommand {
       const fileName = path.join(os.tmpdir(), `logs_${date}.txt`);
       const err: any = await writeFileAsync(fileName, data);
       if (err) {
-        console.log(`Error in writting file: ${err}`);
+        debug(`Error in writing file: ${err}`);
         reject();
       }
       const logs = await readFileAsync(fileName, { encoding: 'utf8'});
@@ -72,7 +74,7 @@ export class ImportLogsCommand extends LoggingCommand {
   }
 
   async addLogsToDb(logs) {
-    console.log('Inserting logs into DB');
+    debug('Inserting logs into DB');
     return this.sequelize.transaction(async transaction => {
       await Promise.all(logs.map(async (record: any) => {
         const { date, uuid, type, ip, meta, groupId, category, data } = record;
@@ -200,7 +202,7 @@ export class ImportLogsCommand extends LoggingCommand {
       };
     }
     const recordSort = sort === 'asc' ? 'ASC' : 'DESC';
-    console.log(where);
+    debug(where);
 
     await this.displayData({
       where,

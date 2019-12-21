@@ -1,12 +1,12 @@
 import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
 import { RegisterUserDto } from './dto/register-user.dto';
-// import { ApiUseTags } from '@nestjs/swagger';
+import { ApiTags } from '@nestjs/swagger';
 import { AuthService } from './auth.service';
 import { AuthUser } from './dto/authUser.interface';
 import { LoginUserDto } from './dto/login-user.dto';
 import { AuthValidationPipe } from './pipes/authValidation.pipe';
 
-// @ApiUseTags('auth')
+@ApiTags('auth')
 @Controller('auth')
 export class AuthController {
   constructor(public service: AuthService) {}

@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { SequelizeCrudService } from '@alphaapps/nestjs-db';
+import { SequelizeCrudService } from '@alphaapps/nestjs-common';
 import User from './user.model';
 
 @Injectable()

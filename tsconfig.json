@@ -23,11 +23,22 @@
     "baseUrl": "./packages",
     "paths": {
       "@alphaapps/nestjs-db": ["nestjs-db/src"],
-      "@alphaapps/nestjs-db/*": ["nestjs-db/src/*"]
+      "@alphaapps/nestjs-db/*": ["nestjs-db/src/*"],
+      "@alphaapps/nestjs-config": ["nestjs-config/src"],
+      "@alphaapps/nestjs-config/*": ["nestjs-config/src/*"],
+      "@alphaapps/nestjs-common": ["nestjs-common/src"],
+      "@alphaapps/nestjs-common/*": ["nestjs-common/src/*"],
+      "@alphaapps/nestjs-auth": ["nestjs-auth/src"],
+      "@alphaapps/nestjs-auth/*": ["nestjs-auth/src/*"],
+      "@alphaapps/nestjs-logs": ["nestjs-logs/src"],
+      "@alphaapps/nestjs-logs/*": ["nestjs-logs/src/*"]
   }
 },
   "references": [
-    { "path": "crud" },
-    { "path": "nestjs-db"}
+    { "path": "nestjs-db"},
+    { "path": "nsetjs-config" },
+    { "path": "nestjs-common"},
+    { "path": "nestjs-auth"},
+    { "path": "nestjs-logs"}
   ]
 }

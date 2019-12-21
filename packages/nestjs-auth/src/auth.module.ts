@@ -3,14 +3,14 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule, JwtModuleOptions } from '@nestjs/jwt';
-const config = require('config');
+import config from 'config';
 import { JwtStrategy } from './jwt/jwt.strategy';
 import AuthOptions from './dto/authOptions.dto';
 
 @Module({
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' })
-  ] 
+  ]
 })
 export class AuthModule {
   static register(options: AuthOptions): DynamicModule {

@@ -3,10 +3,10 @@ import { ModelAttributeColumnOptions, DataType, DataTypes } from 'sequelize';
 import { Locals } from './enum/locals.enum';
 import { format } from 'util';
 
-export function LocalizedColumn(dataType: DataType): Function;
-export function LocalizedColumn(options: Partial<ModelAttributeColumnOptions>): Function;
+export function LocalizedColumn(dataType: DataType | Partial<ModelAttributeColumnOptions>):
+  (target: any, propertyName: string, propertyDescriptor?: PropertyDescriptor) => void;
 export function LocalizedColumn(target: any, propertyName: string, propertyDescriptor?: PropertyDescriptor): void;
-export function LocalizedColumn(...args: any[]): Function | void {
+export function LocalizedColumn(...args: any[]): (target: any, propertyName: string, propertyDescriptor?: PropertyDescriptor) => void {
 
   // In case of no specified options, we infer the
   // sequelize data type by the type of the property

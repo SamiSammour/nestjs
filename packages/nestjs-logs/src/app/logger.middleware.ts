@@ -8,7 +8,6 @@ const debug = d(`${packageName}:logs`);
 
 @Injectable()
 export class LoggerMiddleware implements NestMiddleware {
-
   public sequelize;
   constructor(
     @Inject('SEQUELIZE')
@@ -17,7 +16,7 @@ export class LoggerMiddleware implements NestMiddleware {
     this.sequelize = sequelizeInstance;
   }
 
-  use(req: Request, res: Response, next: Function) {
+  use(req: Request, res: Response, next: () => void) {
     const now: any = new Date();
     // don't log options requests
     if (req.method === 'OPTIONS') {
