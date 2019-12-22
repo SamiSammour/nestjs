@@ -1,6 +1,6 @@
 {
   "name": "@alphaapps/nestjs-config",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "> TODO: description",
   "author": "Sami Sammour <samisammour@gmail.com>",
   "homepage": "https://github.com/SamiSammour/nestjs",
@@ -10,7 +10,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/SamiSammour/nestjs.git"
