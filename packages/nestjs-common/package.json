@@ -7,6 +7,9 @@
   "license": "ISC",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc -b"
   },
@@ -23,5 +26,6 @@
     "nest-access-control": "^2.0.1",
     "passport": "^0.4.1",
     "twilio": "^3.39.1"
-  }
+  },
+  "gitHead": "e03bc41cde77c0b3de42d736794550660af7f42b"
 }
