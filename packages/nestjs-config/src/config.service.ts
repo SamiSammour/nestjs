@@ -10,10 +10,9 @@ export class ConfigService {
   private readonly envConfig: EnvConfig;
 
   constructor(
-    filePath: string,
     @Inject('CONFIG_OPTIONS') private options: ConfigOptionsInterface
     ) {
-    this.envConfig = this.validateInput(config);
+    this.envConfig = options ? this.validateInput(config) : {};
   }
 
   private validateInput(envConfig: EnvConfig): EnvConfig {
@@ -26,6 +25,6 @@ export class ConfigService {
   }
 
   get(key: string): string {
-    return this.envConfig[key];
+    return this.options ? this.envConfig[key] : config.get(key);
   }
 }

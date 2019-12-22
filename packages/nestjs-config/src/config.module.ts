@@ -4,7 +4,7 @@ import { ConfigOptionsInterface } from './config-options.interface';
 
 @Module({})
 export class ConfigModule {
-  static register(option: ConfigOptionsInterface): DynamicModule {
+  static register(option?: ConfigOptionsInterface): DynamicModule {
     return {
       module: ConfigModule,
       providers: [{
@@ -13,7 +13,7 @@ export class ConfigModule {
       },
       {
         provide: ConfigService,
-        useValue: new ConfigService(`${process.env.NODE_ENV || 'development'}.env`, option)
+        useValue: new ConfigService(option)
       }],
       exports: [ConfigService]
     };

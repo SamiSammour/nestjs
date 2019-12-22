@@ -13,9 +13,10 @@
   "scripts": {
     "build": "tsc -b"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@hapi/joi": "^16.1.8",
-    "@nestjs/common": "^6.10.11"
+    "@nestjs/common": "^6.10.11",
+    "config": "^3.2.4"
   },
   "devDependencies": {
     "@types/hapi__joi": "^16.0.4"
