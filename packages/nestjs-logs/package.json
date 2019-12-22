@@ -1,11 +1,30 @@
 {
   "name": "@alphaapps/nestjs-logs",
   "version": "1.0.2",
+  "author": "Sami Sammour <samisammour@gmail.com>",
+  "homepage": "https://github.com/SamiSammour/nestjs",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
+  "files": ["lib"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SamiSammour/nestjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SamiSammour/nestjs/issues"
+  },
+  "keywords": [
+    "typescript",
+    "sequelize",
+    "nest",
+    "nestjs",
+    "api",
+    "backend",
+    "frameworks"
+  ],
   "scripts": {
     "build": "tsc -b"
   },

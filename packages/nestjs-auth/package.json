@@ -2,14 +2,31 @@
   "name": "@alphaapps/nestjs-auth",
   "version": "1.0.2",
   "description": "Now I’m the model of a modern major general / The venerated Virginian veteran whose men are all / Lining up, to put me up on a pedestal / Writin’ letters to relatives / Embellishin’ my elegance and eloquence / But the elephant is in the room / The truth is in ya face when ya hear the British cannons go / BOOM",
-  "keywords": [],
   "author": "Sami Sammour <samisammour@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
+  "homepage": "https://github.com/SamiSammour/nestjs",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
+  "files": ["lib"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SamiSammour/nestjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SamiSammour/nestjs/issues"
+  },
+  "keywords": [
+    "typescript",
+    "sequelize",
+    "nest",
+    "nestjs",
+    "api",
+    "backend",
+    "frameworks"
+  ],
   "scripts": {
     "build": "tsc -b"
   },

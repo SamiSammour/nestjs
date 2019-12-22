@@ -3,13 +3,30 @@
   "version": "1.0.2",
   "description": "> TODO: description",
   "author": "Sami Sammour <samisammour@gmail.com>",
-  "homepage": "",
-  "license": "ISC",
+  "homepage": "https://github.com/SamiSammour/nestjs",
+  "license": "MIT",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "publishConfig": {
     "access": "public"
   },
+  "files": ["lib"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SamiSammour/nestjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SamiSammour/nestjs/issues"
+  },
+  "keywords": [
+    "typescript",
+    "sequelize",
+    "nest",
+    "nestjs",
+    "api",
+    "backend",
+    "frameworks"
+  ],
   "scripts": {
     "build": "tsc -b"
   },
