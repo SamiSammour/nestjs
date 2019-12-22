@@ -12,6 +12,7 @@ export class ExceptionsFilter implements ExceptionFilter {
   }
 
   catch(exception: any, host: ArgumentsHost) {
+    console.log(exception);
     let error;
     let message = exception.message.message;
     const e: any = exception;
@@ -20,6 +21,8 @@ export class ExceptionsFilter implements ExceptionFilter {
         message = `${_.camelCase(e.errors[0].instance.constructor.tableName)}.${_.camelCase(`${e.errors[0].path}  ${e.errors[0].type}`)}`;
       } else if (exception instanceof ValidationError) {
         message = `${_.camelCase(e.errors[0].instance.constructor.tableName)}.${_.camelCase(`${e.errors[0].path}  ${e.errors[0].type}`)}`;
+      } else {
+        message = exception.message;
       }
     }
     error = _.get(this.errors, message);
@@ -31,7 +34,10 @@ export class ExceptionsFilter implements ExceptionFilter {
         : HttpStatus.INTERNAL_SERVER_ERROR;
     response.status((error || { statusCode }).statusCode).json({
       code: (error || {}).code,
-      message: (error || exception.message).message || exception.message.error,
+      message:
+        !((error || exception.message).message || exception.message.error)
+          ? (e.errors? e.errors[0]: e.message)
+          : (error || exception.message).message || exception.message.error,
       statusCode
     });
   }
