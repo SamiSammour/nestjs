@@ -33,7 +33,7 @@
     "build": "tsc -b"
   },
   "dependencies": {
-    "@nest/core": "^4.5.4",
+    "@nestjs/core": "^6.10.11",
     "@nestjs/common": "^6.10.11",
     "@nestjs/passport": "^6.1.1",
     "accept-language-parser": "^1.5.0",
