@@ -68,7 +68,7 @@ function annotate(target: any,
     localization,
     get() {
       const fieldTemplate = Locals[this.$locale || 'en'];
-      const localizedFieldName = format(fieldTemplate, this.rawAttributes.name.field);
+      const localizedFieldName = format(fieldTemplate, propertyName);
       return this[localizedFieldName];
     }
   });
