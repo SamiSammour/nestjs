@@ -183,7 +183,9 @@ export class SequelizeCrudService<T extends Model<T>> extends CrudService<T> {
     if (!found) {
       this.throwNotFoundException(this.model.name);
     }
-    return found as T;
+    return Object.assign({
+      data: found
+    }) as unknown as T;
   }
 
   private hasColumn(column: string): boolean {

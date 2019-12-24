@@ -22,8 +22,11 @@ export class LocalizationSetter<T> implements NestInterceptor<T, Response<T>> {
   }
 
   setLanguage(data: any, lang: any): T {
-    if (data) {
-      data.$locale = lang;
+    if (data && typeof data.data !== 'undefined') {
+      data.data.$locale = lang;
+    }
+    else {
+        data.$locale = lang;
     }
     if (Array.isArray(data)) {
       data.forEach(r => {
