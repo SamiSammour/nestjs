@@ -1,7 +1,12 @@
 import { ExceptionFilter, Catch, ArgumentsHost, HttpException, HttpStatus } from '@nestjs/common';
 import { UniqueConstraintError, ValidationError } from 'sequelize';
 import errorCodesChecker from './error-codes-checker';
+import { Response } from 'express';
 import * as _ from 'lodash';
+import d from 'debug';
+
+const packageName = process.env.npm_package_name;
+const debug = d(`${packageName}:exception-filter`);
 
 @Catch()
 export class ExceptionsFilter implements ExceptionFilter {
@@ -12,7 +17,7 @@ export class ExceptionsFilter implements ExceptionFilter {
   }
 
   catch(exception: any, host: ArgumentsHost) {
-    console.log(exception);
+    debug(exception);
     let error;
     let message = exception.message.message;
     const e: any = exception;
@@ -27,7 +32,7 @@ export class ExceptionsFilter implements ExceptionFilter {
     }
     error = _.get(this.errors, message);
     const ctx = host.switchToHttp();
-    const response = ctx.getResponse();
+    const response: Response = ctx.getResponse();
     const statusCode =
       exception instanceof HttpException
         ? exception.getStatus()
@@ -36,7 +41,7 @@ export class ExceptionsFilter implements ExceptionFilter {
       code: (error || {}).code,
       message:
         !((error || exception.message).message || exception.message.error)
-          ? (e.errors? e.errors[0]: e.message)
+          ? (e.errors ? e.errors[0] : e.message)
           : (error || exception.message).message || exception.message.error,
       statusCode
     });

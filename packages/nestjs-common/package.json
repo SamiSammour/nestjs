@@ -1,12 +1,34 @@
 {
   "name": "@alphaapps/nestjs-common",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "> TODO: description",
   "author": "Sami Sammour <samisammour@gmail.com>",
-  "homepage": "",
-  "license": "ISC",
+  "homepage": "https://github.com/SamiSammour/nestjs",
+  "license": "MIT",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SamiSammour/nestjs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SamiSammour/nestjs/issues"
+  },
+  "keywords": [
+    "typescript",
+    "sequelize",
+    "nest",
+    "nestjs",
+    "api",
+    "backend",
+    "frameworks"
+  ],
   "scripts": {
     "build": "tsc -b"
   },
@@ -23,5 +45,6 @@
     "nest-access-control": "^2.0.1",
     "passport": "^0.4.1",
     "twilio": "^3.39.1"
-  }
+  },
+  "gitHead": "e03bc41cde77c0b3de42d736794550660af7f42b"
 }
