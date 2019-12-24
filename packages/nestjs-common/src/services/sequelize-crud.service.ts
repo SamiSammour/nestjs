@@ -97,7 +97,7 @@ export class SequelizeCrudService<T extends Model<T>> extends CrudService<T> {
     parsed: ParsedRequestParams,
     options: CrudRequestOptions,
   ): boolean {
-    return (
+    return options.query.alwaysPaginate || (
       (Number.isFinite(parsed.page) || Number.isFinite(parsed.offset)) &&
       !!this.getTake(parsed, options.query)
     );
