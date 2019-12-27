@@ -1,6 +1,6 @@
 {
   "name": "@alphaapps/nestjs-logs",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "author": "Sami Sammour <samisammour@gmail.com>",
   "homepage": "https://github.com/SamiSammour/nestjs",
   "main": "lib/index.js",
@@ -31,7 +31,7 @@
     "build": "tsc -b"
   },
   "dependencies": {
-    "@alphaapps/nestjs-db": "^1.0.4",
+    "@alphaapps/nestjs-db": "^1.0.5",
     "@nestjs/core": "^6.10.4",
     "adm-zip": "^0.4.13",
     "aws-sdk": "^2.581.0",
