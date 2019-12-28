@@ -32,7 +32,7 @@
     "@nestjs/common": "^6.10.12",
     "@nestjs/core": "^6.10.12",
     "@nestjs/platform-express": "^6.10.12",
-    "@nestjs/swagger": "^4.0.9",
+    "@nestjs/swagger": "^3.1.0",
     "@nestjsx/crud": "^4.3.3",
     "@nestjsx/crud-request": "^4.3.3",
     "@nestjsx/util": "^4.3.3",

@@ -3,3 +3,48 @@ server:
 MODE: 'normal'
 MODELS_DIR: './**/*.model.js'
 LOG_MODELS_DIR: './**/{alpha,log-message,log-group}.model.js'
+db:
+  dialect: 'postgres'
+  host: 'localhost'
+  port: 5432
+  username: 'test_user'
+  password: 'password'
+  database: 'nest_example'
+  define:
+    underscored: true
+    paranoid: false
+    timestamps: true
+    freezeTableName: false
+logsDB:
+  dialect: 'postgres'
+  host: 'localhost'
+  port: 5432
+  username: 'atm_user'
+  password: 'StrongP@ssw0rd'
+  database: 'logs_db_dev'
+  define:
+    underscored: true
+    paranoid: false
+    timestamps: true
+    freezeTableName: false
+JWT:
+  secretKey: 'secret_key'
+S3:
+  credentials:
+    accessKeyId: ''
+    secretAccessKey: ''
+  bucket: ''
+twilio:
+  appSid: ''
+  authToken: ''
+  messagingSeviceSid: ''
+ses:
+  credentials:
+    region: ''
+    accessKeyId: ''
+    secretAccessKey: ''
+  email:
+    from: ''
+    name: ''
+firebase: ''
+sentryDSN: ''

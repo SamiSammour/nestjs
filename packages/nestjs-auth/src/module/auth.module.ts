@@ -1,11 +1,12 @@
+import { JwtModule, JwtModuleOptions } from '@nestjs/jwt';
 import { DynamicModule, Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
-import { AuthService } from './auth.service';
 import { PassportModule } from '@nestjs/passport';
-import { JwtModule, JwtModuleOptions } from '@nestjs/jwt';
+import { JwtStrategy } from '../jwt/jwt.strategy';
+import AuthOptions from '../dto/authOptions.dto';
+import { AuthService } from './auth.service';
 import config from 'config';
-import { JwtStrategy } from './jwt/jwt.strategy';
-import AuthOptions from './dto/authOptions.dto';
+
 
 @Module({
   imports: [
