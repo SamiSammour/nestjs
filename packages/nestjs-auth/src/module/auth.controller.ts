@@ -1,10 +1,10 @@
 import { Body, Controller, Post, UsePipes, ValidationPipe, Inject } from '@nestjs/common';
 import { ApiUseTags, ApiImplicitBody, ApiCreatedResponse } from '@nestjs/swagger';
-import { AuthValidationPipe } from './pipes/authValidation.pipe';
-import { RegisterUserDto } from './dto/register-user.dto';
-import { AuthUser } from './dto/authUser.interface';
-import { LoginUserDto } from './dto/login-user.dto';
-import { AuthUserDto } from './jwt/auth-user.dto';
+import { AuthValidationPipe } from '../pipes/authValidation.pipe';
+import { RegisterUserDto } from '../dto/register-user.dto';
+import { AuthUser } from '../dto/authUser.interface';
+import { LoginUserDto } from '../dto/login-user.dto';
+import { AuthUserDto } from '../jwt/auth-user.dto';
 import { AuthService } from './auth.service';
 
 @ApiUseTags('auth')

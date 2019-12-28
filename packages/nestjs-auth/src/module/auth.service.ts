@@ -1,10 +1,10 @@
 import {Inject, Injectable, UnauthorizedException, UnprocessableEntityException, HttpException, HttpStatus} from '@nestjs/common';
-import { RegisterUserDto } from './dto/register-user.dto';
-import { LoginUserDto } from './dto/login-user.dto';
-import { AuthUser } from './dto/authUser.interface';
-import AuthOptions from './dto/authOptions.dto';
+import { RegisterUserDto } from '../dto/register-user.dto';
+import { LoginUserDto } from '../dto/login-user.dto';
+import { AuthUser } from '../dto/authUser.interface';
+import AuthOptions from '../dto/authOptions.dto';
 import { JwtService } from '@nestjs/jwt';
-import { utils } from './common/utils';
+import { utils } from '../common/utils';
 import * as _ from 'lodash';
 
 @Injectable()
