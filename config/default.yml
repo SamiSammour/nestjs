@@ -31,20 +31,20 @@ JWT:
   secretKey: 'secret_key'
 S3:
   credentials:
-    accessKeyId: 'AKIA4MOXDGQG6DTPIBMD'
-    secretAccessKey: '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'
-  bucket: 'mersal-media-dev'
+    accessKeyId: ''
+    secretAccessKey: ''
+  bucket: ''
 twilio:
   appSid: ''
   authToken: ''
   messagingSeviceSid: ''
 ses:
   credentials:
-    region: 'eu-west-1'
-    accessKeyId: 'AKIA4MOXDGQGWZPFXODL'
-    secretAccessKey: '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'
+    region: ''
+    accessKeyId: ''
+    secretAccessKey: ''
   email:
-    from: 'no-reply@mersalapp.ae'
-    name: 'Altayer Motors'
+    from: ''
+    name: ''
 firebase: ''
 sentryDSN: ''
