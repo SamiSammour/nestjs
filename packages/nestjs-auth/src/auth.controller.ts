@@ -1,17 +1,24 @@
-import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Post, UsePipes, ValidationPipe, Inject } from '@nestjs/common';
+import { ApiUseTags, ApiImplicitBody, ApiCreatedResponse } from '@nestjs/swagger';
+import { AuthValidationPipe } from './pipes/authValidation.pipe';
 import { RegisterUserDto } from './dto/register-user.dto';
-import { ApiTags } from '@nestjs/swagger';
-import { AuthService } from './auth.service';
 import { AuthUser } from './dto/authUser.interface';
 import { LoginUserDto } from './dto/login-user.dto';
-import { AuthValidationPipe } from './pipes/authValidation.pipe';
+import { AuthUserDto } from './jwt/auth-user.dto';
+import { AuthService } from './auth.service';
 
-@ApiTags('auth')
+@ApiUseTags('auth')
 @Controller('auth')
 export class AuthController {
-  constructor(public service: AuthService) {}
+  constructor(
+    public service: AuthService,
+    @Inject('AuthUserRepo')
+    private readonly usersRepository: AuthUser & typeof AuthUser,
+    ) {}
 
   @Post('/signup')
+  @ApiImplicitBody({ name: 'authCredentialsDto', required : true, type: RegisterUserDto})
+  @ApiCreatedResponse({type : this.usersRepository})
   signUp(
     @Body(ValidationPipe) authCredentialsDto: RegisterUserDto,
   ): Promise<AuthUser> {
@@ -19,8 +26,11 @@ export class AuthController {
   }
 
   @Post('/signin')
+  @ApiImplicitBody({ name: 'authCredentialsDto', required : true, type: RegisterUserDto})
+  @ApiCreatedResponse({type : AuthUserDto})
   signIn(
-    @Body(AuthValidationPipe) authCredentialsDto: LoginUserDto,
+    // TODO: re-add AuthValidationPipe
+    @Body() authCredentialsDto: LoginUserDto,
   ): Promise<{ user: AuthUser; token: string }> {
     return this.service.signIn(authCredentialsDto);
   }

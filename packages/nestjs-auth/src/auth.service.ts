@@ -1,9 +1,11 @@
-import {Inject, Injectable, UnauthorizedException} from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
+import {Inject, Injectable, UnauthorizedException, UnprocessableEntityException, HttpException, HttpStatus} from '@nestjs/common';
 import { RegisterUserDto } from './dto/register-user.dto';
 import { LoginUserDto } from './dto/login-user.dto';
-import AuthOptions from './dto/authOptions.dto';
 import { AuthUser } from './dto/authUser.interface';
+import AuthOptions from './dto/authOptions.dto';
+import { JwtService } from '@nestjs/jwt';
+import { utils } from './common/utils';
+import * as _ from 'lodash';
 
 @Injectable()
 export class AuthService {
@@ -15,24 +17,60 @@ export class AuthService {
   ) {}
 
   async signUp(authCredentialsDto: RegisterUserDto): Promise<AuthUser> {
-    const { email, password } = authCredentialsDto;
-    return this.usersRepository.create({
-      email,
-      // type: UserType.CUSTOMER,
-      isActive: false,
-      password,
-    });
+    const { email, password, name } = authCredentialsDto;
+    try {
+      return await this.usersRepository.create({
+        email,
+        // type: UserType.CUSTOMER,
+        isActive: false,
+        password,
+        name
+      });
+    } catch (errors) {
+      return errors;
+    }
   }
 
-  async signIn(dto: LoginUserDto): Promise<{ user: AuthUser; token: string }> {
-    const { password } = dto;
-    const field = dto[this.options.loginField];
-    const user: AuthUser = await this.usersRepository.findOne({
+  async signIn(loginDto: LoginUserDto): Promise<{ user: AuthUser; token: string }> {
+    let dto = _.clone(loginDto);
+    // Validate and format phone number (in case of customer login)
+    if (dto && dto.phoneNumber) {
+      const validPhoneNumber = utils.isNumberValid(dto.phoneNumber);
+      if (!validPhoneNumber) {
+        throw new HttpException('users.invalidPhoneNumber', HttpStatus.BAD_REQUEST);
+      }
+      dto.phoneNumber = validPhoneNumber;
+    }
+    const { password, pin } = dto;
+    const loginOptions = _.filter(
+      this.options.loginMethods,
+      method => method.passwordField === Object.keys(_.omitBy({ password, pin }, _.isUndefined))[0]
+    )[0];
+    if (!loginOptions) {
+      throw new UnprocessableEntityException();
+    }
+    const user: any = await this.usersRepository.findOne({
       where: {
-        [this.options.loginField]: field
+        [loginOptions.loginField]: dto[loginOptions.loginField]
       }
     });
-    if (user && (await user.isPasswordValid(password))) {
+    // Prevent inactive users from login
+    if (user && !user.isActive) {
+      throw new HttpException('users.inactiveUser', HttpStatus.BAD_REQUEST);
+    }
+    if (
+      user
+      && ((loginOptions.passwordField === 'password' 
+        && (await user.isPasswordValid({
+          passwordField: 'password',
+          passwordValue: password 
+        })))
+      || (loginOptions.passwordField === 'pin' 
+        && (await user.isPasswordValid({
+          passwordField: 'pin',
+          passwordValue: pin
+        }))))
+    ) {
       return {
         user,
         token: await user.generateToken({
@@ -40,7 +78,8 @@ export class AuthService {
           oneSessionPerAccount: this.options.oneSessionPerAccount
         }),
       };
-    } else {
+    }
+    else {
       throw new UnauthorizedException();
     }
   }

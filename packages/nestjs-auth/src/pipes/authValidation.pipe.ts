@@ -7,10 +7,10 @@ export class AuthValidationPipe extends ValidationPipe {
     super();
   }
   async transform(value: any, metadata: ArgumentMetadata) {
-    const field = value[this.options.loginField];
-    if (!field) {
-      throw new BadRequestException(`${this.options.loginField} is required`);
-    }
+    // const field = value[this.options.loginField];
+    // if (!field) {
+    //   throw new BadRequestException(`${this.options.loginField} is required`);
+    // }
     return super.transform(value, metadata);
   }
 }

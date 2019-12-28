@@ -1,9 +1,12 @@
 import {
-  IsEmail, IsOptional,
+  IsEmail,
+  IsOptional,
   IsString,
   Matches,
   MaxLength,
-  MinLength, ValidateIf,
+  MinLength,
+  ValidateIf,
+  Length
 } from 'class-validator';
 
 export class LoginUserDto {
@@ -18,11 +21,17 @@ export class LoginUserDto {
   @ValidateIf(o => !o.email)
   phoneNumber?: string;
 
+  @IsOptional()
   @IsString()
   @MinLength(8)
   @MaxLength(20)
   @Matches(/((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/, {
     message: 'password too weak',
   })
-  password: string;
+  password?: string;
+
+  @IsOptional()
+  @IsString()
+  @Length(4)
+  pin?: string;
 }

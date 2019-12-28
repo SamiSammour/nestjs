@@ -1,5 +1,4 @@
 import { Model } from 'sequelize';
-import { JwtPayload } from '../jwt/jwt-payload.interface';
 import { JwtService } from '@nestjs/jwt';
 
 export interface GenerateTokenOptions {
@@ -8,11 +7,16 @@ export interface GenerateTokenOptions {
   newToken?: boolean;
 }
 
+export interface passwordFieldOptions {
+  passwordField: string;
+  passwordValue: string;
+}
+
 export abstract class AuthUser extends Model<AuthUser> {
   id: number;
   tokenIssuedAt: Date;
   email?: string;
   phoneNumber?: string;
-  abstract isPasswordValid(password: string): boolean;
+  abstract isPasswordValid(options: passwordFieldOptions): boolean;
   abstract generateToken(options: GenerateTokenOptions): Promise<string>;
 }
