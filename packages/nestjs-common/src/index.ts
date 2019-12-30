@@ -4,6 +4,7 @@ export * from './services/sequelize-crud.service';
 export * from './guards/access-control.guard';
 export * from './controllers/acl-crud.controller';
 export * from './decorators/set-owner.decorator';
+export * from './decorators/get-user.decorator';
 export * from './filters/exception.filter';
 export * from './utils/firebase';
 export * from './utils/twilio';
