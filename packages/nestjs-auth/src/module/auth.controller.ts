@@ -8,7 +8,7 @@ import { AuthUserDto } from '../jwt/auth-user.dto';
 import { AuthService } from './auth.service';
 
 @ApiUseTags('auth')
-@Controller('auth')
+@Controller('')
 export class AuthController {
   constructor(
     public service: AuthService,
