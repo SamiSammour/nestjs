@@ -80,7 +80,8 @@ export class AuthService {
       };
     }
     else {
-      throw new UnauthorizedException();
+      // TODO: handle this error in a more generic way
+      throw new HttpException('common.unauthorized', HttpStatus.UNAUTHORIZED);
     }
   }
 }
