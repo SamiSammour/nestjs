@@ -80,10 +80,10 @@ export class SequelizeCrudService<T extends Model<T>> extends CrudService<T> {
    * @param req
    */
   public async deleteOne(req: CrudRequest): Promise<void | T> {
-    const found = await this.getOneOrFail(req);
+    const found: any = await this.getOneOrFail(req);
     await this.model.destroy({
       where: {
-        id: found.id,
+        id: found.data.id,
       },
     });
 

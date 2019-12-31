@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UsePipes, ValidationPipe, Inject } from '@nestjs/common';
+import { Body, Controller, Post, UsePipes, ValidationPipe, Inject, HttpCode } from '@nestjs/common';
 import { ApiUseTags, ApiImplicitBody, ApiCreatedResponse } from '@nestjs/swagger';
 import { AuthValidationPipe } from '../pipes/authValidation.pipe';
 import { RegisterUserDto } from '../dto/register-user.dto';
@@ -8,7 +8,7 @@ import { AuthUserDto } from '../jwt/auth-user.dto';
 import { AuthService } from './auth.service';
 
 @ApiUseTags('auth')
-@Controller('auth')
+@Controller('')
 export class AuthController {
   constructor(
     public service: AuthService,
@@ -25,6 +25,7 @@ export class AuthController {
     return this.service.signUp(authCredentialsDto);
   }
 
+  @HttpCode(200)
   @Post('/signin')
   @ApiImplicitBody({ name: 'authCredentialsDto', required : true, type: RegisterUserDto})
   @ApiCreatedResponse({type : AuthUserDto})

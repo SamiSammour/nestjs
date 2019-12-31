@@ -1,6 +1,6 @@
 {
   "name": "@alphaapps/nestjs-common",
-  "version": "1.0.8",
+  "version": "1.0.12",
   "description": "> TODO: description",
   "author": "Sami Sammour <samisammour@gmail.com>",
   "homepage": "https://github.com/SamiSammour/nestjs",
@@ -35,6 +35,7 @@
   "dependencies": {
     "@nestjs/common": "^6.10.11",
     "@nestjs/core": "^6.10.11",
+    "@nestjs/jwt": "^6.1.1",
     "@nestjs/passport": "^6.1.1",
     "accept-language-parser": "^1.5.0",
     "aws-sdk": "^2.594.0",
