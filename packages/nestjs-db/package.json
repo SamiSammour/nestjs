@@ -32,7 +32,7 @@
     "build": "tsc -b"
   },
   "dependencies": {
-    "config": "^3.2.4",
+    "config": "^3.3.8",
     "debug": "3.1.0",
     "lodash": "^4.17.15"
   },
