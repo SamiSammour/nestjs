@@ -37,7 +37,7 @@
     "@nestjsx/crud-request": "^4.3.3",
     "@nestjsx/util": "^4.3.3",
     "class-transformer": "^0.2.3",
-    "class-validator": "^0.11.0",
+    "class-validator": "^0.14.0",
     "config": "^3.2.4",
     "debug": "^4.1.1",
     "lodash": "^4.17.15",
